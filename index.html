@@ -7,7 +7,11 @@
 <meta name="description" content="Трёхкомнатная квартира 62,7 м² с джакузи и дизайнерским ремонтом, Sõpruse 14a, Ахтме, Кохтла-Ярве. 110 000 €.">
 <meta property="og:title" content="Квартира 62,7 м² в Ахтме — 110 000 €">
 <meta property="og:description" content="Sõpruse 14a, Ахтме, Кохтла-Ярве. Джакузи, кухня-гостиная 27,6 м², 5 минут до больницы.">
-<meta property="og:image" content="images/living.jpg">
+<meta property="og:image" content="https://sopruse14a.com/images/living.jpg">
+<meta property="og:url" content="https://sopruse14a.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sopruse14a.com/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +94,7 @@ dialog .close{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right
 <main>
 <div class="wrap"><div class="banner"><p data-t="banner"></p></div></div>
 <div class="wrap hero">
-  <img src="images/living.jpg" id="heroImg" alt="" style="cursor:zoom-in">
+  <img src="images/living.webp" id="heroImg" alt="" style="cursor:zoom-in" fetchpriority="high" width="1448" height="1086">
   <div class="hero-text">
     <div class="l"><h1 data-t="title"></h1><p class="sub" data-t="sub"></p></div>
     <div class="price-box"><div class="price">110 000 €</div><div class="note" data-t="priceNote"></div><a class="btn" href="#contact" data-t="cta"></a></div>
@@ -100,7 +104,7 @@ dialog .close{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right
 <section class="wrap"><div class="facts" id="facts"></div></section>
 <section class="wrap"><h2 data-t="aboutTitle"></h2><p class="about" data-t="about"></p><div class="hl" id="hl"></div></section>
 <section class="wrap"><h2 data-t="galleryTitle"></h2><div class="gallery" id="gallery"></div></section>
-<section class="wrap"><h2 data-t="planTitle"></h2><div class="plan"><img src="images/plan.png" id="planImg" alt="" style="cursor:zoom-in"></div></section>
+<section class="wrap"><h2 data-t="planTitle"></h2><div class="plan"><img src="images/plan.webp" id="planImg" alt="" style="cursor:zoom-in" loading="lazy" width="735" height="1049"></div></section>
 <section class="wrap"><div class="cards">
   <div class="card"><h2 data-t="rentTitle"></h2><p data-t="rent"></p></div>
   <div class="card"><h2 data-t="buildingTitle"></h2><p data-t="building"></p></div>
@@ -113,7 +117,8 @@ dialog .close{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right
 <footer>Sõpruse 14a, Ahtme, Kohtla-Järve, Eesti</footer>
 <dialog id="lb"><button class="close" id="lbClose" aria-label="Close">×</button><img id="lbImg" alt=""><div class="cap" id="lbCap"></div><div class="nav" id="lbNav"><button type="button" id="lbPrev" aria-label="Previous">‹</button><span id="lbCount"></span><button type="button" id="lbNext" aria-label="Next">›</button></div></dialog>
 <script>
-var IMG = {living:'images/living.jpg',kitchen:'images/kitchen.jpg',fridge:'images/fridge.jpg',jacuzzi:'images/jacuzzi.jpg',jacuzzi2:'images/jacuzzi2.jpg',bath2:'images/bath2.jpg',bedroom:'images/bedroom.jpg',office:'images/office.jpg',wardrobe:'images/wardrobe.jpg',hall:'images/hall.jpg',entry:'images/entry.jpg',jacuzzi3:'images/jacuzzi3.jpg',view:'images/view.jpg',building:'images/building.jpg',stair:'images/stair.jpg',gazebo:'images/gazebo.jpg'};
+var IMG = {living:'images/living.webp',kitchen:'images/kitchen.webp',fridge:'images/fridge.webp',jacuzzi:'images/jacuzzi.webp',jacuzzi2:'images/jacuzzi2.webp',bath2:'images/bath2.webp',bedroom:'images/bedroom.webp',office:'images/office.webp',wardrobe:'images/wardrobe.webp',hall:'images/hall.webp',entry:'images/entry.webp',jacuzzi3:'images/jacuzzi3.webp',view:'images/view.webp',building:'images/building.webp',stair:'images/stair.webp',gazebo:'images/gazebo.webp'};
+function TH(src){return src.replace('images/','images/thumbs/');}
 var T = {
       ru: {
         regionTitle: 'Ида-Вирумаа: что рядом',
@@ -230,8 +235,8 @@ function render(lang){
   document.getElementById('heroImg').alt=t.caps[0];
   document.getElementById('planImg').alt=t.planTitle;
   document.getElementById('facts').innerHTML=t.facts.map(function(f){return '<div class="fact"><div class="num">'+esc(f.v)+'</div><div>'+esc(f.k)+'</div></div>';}).join('');
-  document.getElementById('hl').innerHTML=t.highlights.map(function(h){return '<article><img src="'+h.img+'" alt="'+esc(h.title)+'" loading="lazy"><div class="t"><h3>'+esc(h.title)+'</h3><p>'+esc(h.text)+'</p></div></article>';}).join('');
-  document.getElementById('gallery').innerHTML=order.map(function(src,i){return '<figure><button type="button" data-i="'+i+'" aria-label="'+esc(t.caps[i])+'"><img src="'+src+'" alt="'+esc(t.caps[i])+'" loading="lazy"></button><figcaption>'+esc(t.caps[i])+'</figcaption></figure>';}).join('');
+  document.getElementById('hl').innerHTML=t.highlights.map(function(h){return '<article><img src="'+TH(h.img)+'" alt="'+esc(h.title)+'" loading="lazy"><div class="t"><h3>'+esc(h.title)+'</h3><p>'+esc(h.text)+'</p></div></article>';}).join('');
+  document.getElementById('gallery').innerHTML=order.map(function(src,i){return '<figure><button type="button" data-i="'+i+'" aria-label="'+esc(t.caps[i])+'"><img src="'+TH(src)+'" alt="'+esc(t.caps[i])+'" loading="lazy" decoding="async"></button><figcaption>'+esc(t.caps[i])+'</figcaption></figure>';}).join('');
   document.getElementById('region').innerHTML=t.region.map(function(r){return '<div><h3>'+esc(r.t)+'</h3><p>'+esc(r.d)+'</p></div>';}).join('');
   document.getElementById('contacts').innerHTML=t.contacts.map(function(c){var ext=c.href.indexOf('http')===0?' target="_blank" rel="noopener"':'';return '<a href="'+c.href+'"'+ext+'><span>'+esc(c.k)+'</span><span>'+esc(c.v)+'</span></a>';}).join('');
   document.getElementById('langs').innerHTML=LANGS.map(function(p){return '<button type="button" data-l="'+p[0]+'" aria-pressed="'+(p[0]===lang)+'">'+p[1]+'</button>';}).join('');
@@ -240,10 +245,10 @@ function render(lang){
 }
 document.getElementById('langs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)render(b.getAttribute('data-l'));});
 var lb=document.getElementById('lb'),cur=null;
-function show(i){cur=i;var plan=i==='plan';var src=plan?'images/plan.png':order[i];var cap=plan?window.__t.planTitle:window.__t.caps[i];
+function show(i){cur=i;var plan=i==='plan';var src=plan?'images/plan.webp':order[i];var cap=plan?window.__t.planTitle:window.__t.caps[i];
 document.getElementById('lbImg').src=src;document.getElementById('lbImg').alt=cap;document.getElementById('lbCap').textContent=cap;
 document.getElementById('lbNav').style.display=plan?'none':'flex';document.getElementById('lbCount').textContent=plan?'':(i+1)+' / '+order.length;
-if(!lb.open&&lb.showModal)lb.showModal();}
+if(!lb.open&&lb.showModal)lb.showModal();if(!plan){[1,-1].forEach(function(d){var im=new Image();im.src=order[(i+d+order.length)%order.length];});}}
 function step(d){if(cur==null||cur==='plan')return;show((cur+d+order.length)%order.length);}
 document.getElementById('gallery').addEventListener('click',function(e){var b=e.target.closest('button');if(b)show(+b.getAttribute('data-i'));});
 document.getElementById('heroImg').addEventListener('click',function(){show(0);});
